@@ -76,7 +76,7 @@ if [ "$TARGET" = noctalia ]; then
         ok "plugin comes from the noctalia store; installing the backend only"
     else
         mkdir -p "$PLUGIN"
-        install -m 644 "$HERE"/noctalia/* "$PLUGIN/"
+        cp -r "$HERE"/noctalia/. "$PLUGIN/"
         ok "$PLUGIN"
     fi
 else
