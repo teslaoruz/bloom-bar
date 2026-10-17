@@ -1,0 +1,12 @@
+[Unit]
+Description=Re-apply the Claude Code bar entry after a caelestia upgrade
+# A pacman transaction fires the path unit many times; never lock it out.
+StartLimitIntervalSec=0
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 %h/.local/share/claude-tray/sync-caelestia.py --if-changed --restart
+# Retry transient failures (e.g. systemd itself being upgraded mid-transaction).
+# Once a build succeeds, --if-changed makes reruns a no-op.
+Restart=on-failure
+RestartSec=30

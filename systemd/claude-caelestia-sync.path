@@ -1,0 +1,9 @@
+[Unit]
+Description=Watch pacman for caelestia-shell upgrades
+
+[Path]
+PathChanged=/var/lib/pacman/local
+Unit=claude-caelestia-sync.service
+
+[Install]
+WantedBy=default.target
